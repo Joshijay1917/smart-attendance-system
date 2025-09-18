@@ -54,7 +54,7 @@ const Session = ({roomLocation}) => {
             seterror("Enter no. of students")
             return;
         }
-        if(!formData.roomLocation) {
+        if(formData.roomLocation == {}) {
             seterror("Room Location not found")
             return;
         }
