@@ -1,38 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-// store.jsx
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  ArcElement,
-  Filler,
-  Title,
-  Tooltip,
-  Legend,
-  Colors,
-} from "chart.js"
-
-// ✅ Call this once anywhere (store is a good place)
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  ArcElement,
-  Filler,
-  Title,
-  Tooltip,
-  Legend,
-  Colors
-);
-
-console.log("charts registered")
 
 export const Store = createContext(null)
 
