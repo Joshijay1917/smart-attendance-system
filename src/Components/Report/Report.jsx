@@ -2,6 +2,40 @@ import React from 'react'
 import Graph from './charts/Graph';
 import { Chart } from "react-chartjs-2";
 import { Line, Doughnut, Bar, Pie } from "react-chartjs-2";
+// store.jsx
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  ArcElement,
+  Filler,
+  Title,
+  Tooltip,
+  Legend,
+  Colors,
+} from "chart.js"
+
+// ✅ Call this once anywhere (store is a good place)
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  BarElement,
+  ArcElement,
+  Filler,
+  Title,
+  Tooltip,
+  Legend,
+  Colors
+);
+
+console.log("charts registered")
 
 const Report = () => {
     const data = {
