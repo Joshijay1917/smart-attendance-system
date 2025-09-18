@@ -5,7 +5,7 @@ const Classes = () => {
   return (
     <div className='box p-3 my-5'>
       <h1 className='heading'>Today's Classes</h1>
-      <div className='md:grid md:grid-cols-2 gap-[20px]'>
+      <div className='md:grid md:grid-cols-2 gap-[20px] mt-10'>
       <Class />
       <Class />
       <Class />
