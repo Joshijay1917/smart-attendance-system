@@ -6,10 +6,6 @@ import { MdPeople } from 'react-icons/md'
 import { SlCalender } from 'react-icons/sl'
 
 const StatsCard = ({ type, number, title }) => {
-    const [icon, seticon] = useState("")
-    useEffect(() => {
-
-    }, [])
 
     const statIcon = () => {
         if (type == "students") {
@@ -24,9 +20,9 @@ const StatsCard = ({ type, number, title }) => {
     }
 
     return (
-        <div className='flex flex-col items-center rounded-2xl box p-5 gap-2'>
+        <div className='flex flex-col items-center rounded-2xl border border-gray-300 p-5 gap-2'>
             {statIcon()}
-            <h1 className='heading'>{number}</h1>
+            <h1 className='heading-3'>{number}</h1>
             <p className='heading-2'>{title}</p>
         </div>
     )

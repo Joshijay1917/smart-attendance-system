@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import QrCode from './QrCode'
 import Session from '../Session/Session'
 import { useLocation } from 'react-router-dom'
+import GetLocation from './GetLocation'
 
 const Main = () => {
-  const { state } = useLocation()
+  const [roomlocation, setroomlocation] = useState({})
+  
   return (
-    <div>
+    <div className='md:m-auto md:w-[80%]'>
       <QrCode />
-      <Session roomLocation={state}/>
+      <GetLocation setroomlocation={setroomlocation} roomlocation={roomlocation}/>
+      <Session roomLocation={roomlocation}/>
     </div>
   )
 }

@@ -12,7 +12,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className='md:mx-[170px]'>
+    <div className='md:m-auto md:w-[80%]'>
     <Header />
     <QuickAccess />
     <Overview />
