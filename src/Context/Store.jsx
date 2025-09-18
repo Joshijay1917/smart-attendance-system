@@ -32,6 +32,8 @@ ChartJS.register(
   Colors
 );
 
+console.log("charts registered")
+
 export const Store = createContext(null)
 
 const StoreProvider = (props) => {
