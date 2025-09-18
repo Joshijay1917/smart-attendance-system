@@ -6,7 +6,7 @@ import { MdPeople } from 'react-icons/md'
 
 const Class = () => {
     return (
-        <div className='box p-3 rounded-2xl my-2'>
+        <div className='box p-3 rounded-2xl'>
             <div className='flex justify-between items-center'>
                 <h1 className='heading'>DBMS</h1>
                 <h2 className='heading-2 flex items-center text-green-500 gap-1'><FaPlay /> Active</h2>
