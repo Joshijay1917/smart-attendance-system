@@ -1,5 +1,6 @@
 import React from 'react'
 import Graph from './charts/Graph';
+import { Chart } from "react-chartjs-2";
 
 const Report = () => {
     const data = {
@@ -78,16 +79,16 @@ const Report = () => {
       <div className='md:grid md:grid-cols-2 gap-5'>
 
       <div className='h-[30vh] my-3'>
-      <Graph type={'line'} data={data} options={options}/>
+      <Chart type={'line'} data={data} options={options}/>
       </div>
       <div className='h-[30vh] my-3'>
-      <Graph type={'bar'} data={data} options={options}/>
+      <Chart type={'bar'} data={data} options={options}/>
       </div>
       <div className='h-[30vh] my-3'>
-      <Graph type={'pie'} data={data} options={options}/>
+      <Chart type={'pie'} data={data} options={options}/>
       </div>
       <div className='h-[30vh] my-3'>
-      <Graph type={'doughnut'} data={data} options={options}/>
+      <Chart type={'doughnut'} data={data} options={options}/>
       </div>
       </div>
     </div>
