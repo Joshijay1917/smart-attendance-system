@@ -58,6 +58,7 @@ const Session = ({roomLocation}) => {
             seterror("Room Location not found")
             return;
         }
+        console.log("location:",formData.roomLocation);
 
         const id = uuid();
         storeData.setsession({id: id, ...formData})
