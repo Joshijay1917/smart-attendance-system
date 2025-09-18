@@ -14,7 +14,7 @@ import {
   Tooltip,
   Legend,
   Colors,
-} from "chart.js";
+} from "chart.js"
 
 // ✅ Call this once anywhere (store is a good place)
 ChartJS.register(
