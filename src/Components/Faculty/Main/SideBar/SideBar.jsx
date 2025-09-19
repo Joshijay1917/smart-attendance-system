@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { BiCross, BiSolidDashboard } from 'react-icons/bi'
+import { BiSolidDashboard } from 'react-icons/bi'
 import { BsQrCode } from 'react-icons/bs'
-import { FaCross } from 'react-icons/fa'
 import { GoGraph } from 'react-icons/go'
 import { IoCloseCircle } from 'react-icons/io5'
 import { MdPeople } from 'react-icons/md'

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { BsQrCode } from 'react-icons/bs'
 import { v4 as uuid } from 'uuid'
-import { Store } from '../../../Context/Store'
+import { Store } from '../../../../../Context/Store'
 import { FaLocationDot } from 'react-icons/fa6'
 import { useNavigate } from 'react-router-dom'
 

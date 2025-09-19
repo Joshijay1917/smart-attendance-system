@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React from 'react'
 import { BsGraphUp } from 'react-icons/bs'
 import { FaPlay } from 'react-icons/fa'
 import { MdPeople } from 'react-icons/md'

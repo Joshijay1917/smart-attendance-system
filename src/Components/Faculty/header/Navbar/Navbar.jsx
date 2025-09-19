@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { HiOutlineBars3 } from 'react-icons/hi2'
 import { PiStudentFill } from 'react-icons/pi'
-import SideBar from '../../SideBar/SideBar'
+import SideBar from '../../Main/SideBar/SideBar'
 
 const Navbar = () => {
   const [siedeBar, setsiedeBar] = useState(false)

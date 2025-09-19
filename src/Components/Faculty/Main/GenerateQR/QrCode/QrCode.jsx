@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { BsQrCode } from 'react-icons/bs'
-import { Store } from '../../../Context/Store'
+import { Store } from '../../../../../Context/Store'
 import Code from './Code'
 
 const QrCode = () => {
