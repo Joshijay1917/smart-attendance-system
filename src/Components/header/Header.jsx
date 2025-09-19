@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const Header = () => {
   const navigate = useNavigate()
   return (
-    <div className='box mt-3 p-3'>
+    <div className='box mt-3 p-3 flex'>
       <h1 className='heading'>Good Morning, Professer!</h1>
       <p>Manage your classes and monitor attendance in real-time</p>
       <div className='flex gap-3'>
