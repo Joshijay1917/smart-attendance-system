@@ -34,7 +34,7 @@ export default function SmartPresenceLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex p-10">
+    <div className="min-h-screen bg-gray-50 flex md:p-10">
 
       {/* Left Side - Login Form */}
       <div className="flex-1 flex items-center justify-center px-8">
