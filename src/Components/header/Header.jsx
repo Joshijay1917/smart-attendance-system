@@ -5,9 +5,11 @@ import { useNavigate } from 'react-router-dom'
 const Header = () => {
   const navigate = useNavigate()
   return (
-    <div className='box mt-3 p-3 flex'>
+    <div className='box mt-3 p-3 flex justify-between'>
+      <div>
       <h1 className='heading'>Good Morning, Professer!</h1>
       <p>Manage your classes and monitor attendance in real-time</p>
+      </div>
       <div className='flex gap-3'>
       <button onClick={()=>window.location.href = '/'} className='btn my-3 flex items-center gap-2'><SlRefresh className='text-[24px]'/> Refresh</button>
        <input type='date' value={new Date().toISOString().split("T")[0]}/> 
