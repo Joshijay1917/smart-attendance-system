@@ -8,12 +8,12 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCuQL0WmD5y-NRMY51KZapv6frtaupykH4",
-  authDomain: "smart-attendance-system-1f789.firebaseapp.com",
-  projectId: "smart-attendance-system-1f789",
-  storageBucket: "smart-attendance-system-1f789.firebasestorage.app",
-  messagingSenderId: "813985617007",
-  appId: "1:813985617007:web:63d272b277f2e047d8299a",
+  apiKey: process.env.VITE_FIREBASE_API_KEY,
+  authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.VITE_FIREBASE_APP_ID,
   measurementId: "G-VJ7TTC7TH0"
 };
 
