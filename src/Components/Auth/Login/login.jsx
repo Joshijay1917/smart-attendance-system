@@ -4,6 +4,7 @@ import { Eye, EyeOff, ChevronDown, Shield, Lock, CheckCircle, GraduationCap } fr
 import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../../Firebase/auth';
 import { useAuth } from '../../../Context/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
+import { Navigate } from 'react-router-dom';
 
 export default function SmartPresenceLogin() {
   const { userLoggedIn } = useAuth();
@@ -35,7 +36,7 @@ export default function SmartPresenceLogin() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex md:p-10">
-
+      {userLoggedIn && <Navigate to="/dashboard"/>}
       {/* Left Side - Login Form */}
       <div className="flex-1 flex items-center justify-center px-8">
         <div className="w-full max-w-md">

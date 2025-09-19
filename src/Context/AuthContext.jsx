@@ -15,10 +15,12 @@ export function AuthProvider({ children }) {
 
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, initializeUser);
-      return unsubscribe;
+      return () => unsubscribe();
     }, [])
     
     async function initializeUser(user) {
+        console.log("User = ", user);
+        
         if(user) {
             setCurrentUser({ ...user });
             setUserLoggedIn(true);
@@ -37,6 +39,7 @@ export function AuthProvider({ children }) {
 
     return (
         <AuthContext.Provider value={value}>
+            {loading && <p>Loading.....</p>}
             {!loading && children}
         </AuthContext.Provider>
     )
