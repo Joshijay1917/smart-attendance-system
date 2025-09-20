@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { PiStudentFill } from 'react-icons/pi'
 import { Eye, EyeOff, ChevronDown, Shield, Lock, CheckCircle, GraduationCap } from 'lucide-react';
-import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../../Firebase/auth';
-import { useAuth } from '../../../Context/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
 
 export default function SmartPresenceLogin() {
-  const { userLoggedIn } = useAuth();
+  // const { userLoggedIn } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false);
   const [isSigningIn, setIsSigningIn] = useState(false)
@@ -17,8 +15,8 @@ export default function SmartPresenceLogin() {
     e.preventDefault();
     if(!isSigningIn) {
       setIsSigningIn(true);
-      const user = await doSignInWithEmailAndPassword(email, password)
-      console.log("User ", user);
+      // const user = await doSignInWithEmailAndPassword(email, password)
+      // console.log("User ", user);
     }
   }
 

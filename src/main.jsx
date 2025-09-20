@@ -12,7 +12,6 @@ import Report from './Components/Faculty/Main/Report/Report.jsx'
 import Login from './Components/Auth/Login/login.jsx'
 import Register from './Components/Auth/Register/Register.jsx'
 import { AuthProvider } from './Context/AuthContext.jsx'
-// import { useAuth } from './Context/AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>

@@ -1,46 +1,29 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../../firebaseConfig.js";
-import { onAuthStateChanged } from "firebase/auth";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { createContext, useContext, useState } from "react";
 
-const AuthContext = createContext()
+const AuthContext = createContext();
+const CLIENT_ID = "813985617007-uiqlskutinet483mcebfor0en6ld8r9d.apps.googleusercontent.com"
 
 export function useAuth() {
-    return useContext(AuthContext);
+    return useContext(AuthContext)
 }
 
 export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState(null)
-    const [userLoggedIn, setUserLoggedIn] = useState(false)
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, initializeUser);
-      return () => unsubscribe();
-    }, [])
-    
-    async function initializeUser(user) {
-        console.log("User = ", user);
-        
-        if(user) {
-            setCurrentUser({ ...user });
-            setUserLoggedIn(true);
-        } else {
-            setCurrentUser(null);
-            setUserLoggedIn(false);
-        }
-        setLoading(false);
-    }
+    const [currentUser, setCurrentUser] = useState(null);
+    const [isLoggedin, setIsLoggedin] = useState(false);
 
     const value = {
         currentUser,
-        userLoggedIn,
-        loading
+        isLoggedin,
+        setIsLoggedin,
+        setCurrentUser
     }
 
     return (
-        <AuthContext.Provider value={value}>
-            {loading && <p>Loading.....</p>}
-            {!loading && children}
-        </AuthContext.Provider>
+        <GoogleOAuthProvider clientId={CLIENT_ID}>
+            <AuthContext.Provider value={value}>
+                {children}
+            </AuthContext.Provider>
+        </GoogleOAuthProvider>
     )
 }

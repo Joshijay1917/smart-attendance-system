@@ -1,42 +1,50 @@
 import React, { useState } from 'react';
 import { PiStudentFill } from 'react-icons/pi'
 import { Eye, EyeOff, ChevronDown, Shield, Lock, CheckCircle, GraduationCap } from 'lucide-react';
-import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../../Firebase/auth';
-import { useAuth } from '../../../Context/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
 import { Navigate } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
+import { useAuth } from '../../../Context/AuthContext';
 
 export default function SmartPresenceLogin() {
-  const { userLoggedIn } = useAuth();
+  const { setIsLoggedin, setCurrentUser, isLoggedin } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false);
   const [isSigningIn, setIsSigningIn] = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
+  const [errorMsg, seterrorMsg] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if(!isSigningIn) {
       setIsSigningIn(true);
-      const user = await doSignInWithEmailAndPassword(email, password)
-      console.log("User ", user);
+      if(e.email.value === 'admin123@gmail.com' && e.password.value === 'admin1917') {
+        setCurrentUser({
+          email: e.email.value,
+          password: e.password.value,
+        })
+        setIsLoggedin(true)
+        return;
+      }
+      seterrorMsg('Sorry only admin is allowed to login! Please login with Google')
     }
   }
 
-  const onGoogleSignIn = (e) => {
-    e.preventDefault();
+  const onGoogleSignIn = (user) => {
     if(!isSigningIn) {
       setIsSigningIn(true)
-      const user = doSignInWithGoogle().catch(err => {
-        setIsSigningIn(false)
-      })
-      console.log("User ", user);
+      const token = user.credential
+      const data = jwtDecode(token)
+      setIsLoggedin(true)
+      setCurrentUser(data)
     }
   }
 
   return (
     <div className="min-h-screen bg-gray-50 flex md:p-10">
-      {userLoggedIn && <Navigate to="/dashboard"/>}
+      {isLoggedin && <Navigate to="/dashboard"/>}
       {/* Left Side - Login Form */}
       <div className="flex-1 flex items-center justify-center px-8">
         <div className="w-full max-w-md">
@@ -65,7 +73,7 @@ export default function SmartPresenceLogin() {
                 Email <span className="text-red-500">*</span>
               </label>
               <input
-                id="email"
+                name="email"
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -80,7 +88,7 @@ export default function SmartPresenceLogin() {
               </label>
               <div className="relative">
                 <input
-                  id="password"
+                  name="password"
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -97,6 +105,8 @@ export default function SmartPresenceLogin() {
               </div>
             </div>
 
+            {errorMsg && <p className='text-red-500'>{errorMsg}</p>}
+
             <button
               type="submit"
               onClick={() => console.log('Sign In clicked')}
@@ -112,9 +122,17 @@ export default function SmartPresenceLogin() {
             </div>
           </form>
           <hr className='my-5 text-gray-500'/>
-              <button onClick={onGoogleSignIn} className="text-xl w-full cursor-pointer hover:bg-[#6666] shadow-2xl border border-[#6666] flex items-center rounded-2xl justify-center p-3 gap-3">
+          {/* <label htmlFor="Google">
+              <button className="text-xl w-full cursor-pointer hover:bg-[#6666] shadow-2xl border border-[#6666] flex items-center rounded-2xl justify-center p-3 gap-3">
                 <FcGoogle className='text-2xl'/> Sign In with Google
               </button>
+          </label> */}
+          <div className='mx-auto w-full'>
+              <GoogleLogin
+              onSuccess={onGoogleSignIn}
+              onError={(err)=>console.log("Google Sign In Error : ", err)}
+              />
+              </div>
         </div>
       </div>
 
