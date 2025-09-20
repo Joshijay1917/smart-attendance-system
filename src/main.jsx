@@ -18,9 +18,9 @@ createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <StoreProivder>
         <Routes>
-          <Route path='/' element={<Login />} />
+          <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/dashboard' element={<App />} />
+          <Route path='/' element={<App />} />
           <Route path='/qrcode-generate' element={<Main />} />
           <Route path='/view-classes' element={<ViewClasses />} />
           <Route path='/report' element={<Report />} />
