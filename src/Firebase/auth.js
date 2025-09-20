@@ -20,6 +20,7 @@ export const doSignInWithEmailAndPassword = async (email, password) => {
 export const doSignInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
     const result = await signInWithRedirect(auth, provider);
+    console.log("google = ", result)
     //result.user
     return result;
 }
