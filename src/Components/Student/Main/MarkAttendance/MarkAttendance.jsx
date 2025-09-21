@@ -39,6 +39,7 @@ const MarkAttendance = () => {
 
             return false;
         } catch (error) {
+            console.error("backend call err ", error)
             return false;
         }
     };
@@ -51,6 +52,9 @@ const MarkAttendance = () => {
                 if (!(await isTokenValid(data[0].rawValue))) {
                     console.log("Attendance Not marked")
                     setloading("Failed to mark Attendance");
+                    setTimeout(() => {
+                        setloading('')
+                    }, 5000);
                     return;
                 }
                 setloading("Attendance Marked")
