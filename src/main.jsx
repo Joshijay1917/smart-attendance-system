@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 // import './index.css'
 import App from './App.jsx'
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import Navbar from './Components/Faculty/header/Navbar/Navbar.jsx'
 import Main from './Components/Faculty/Main/GenerateQR/QrCode/Main.jsx'
 import StoreProivder from './Context/Store.jsx'
@@ -12,33 +12,35 @@ import Report from './Components/Faculty/Main/Report/Report.jsx'
 import Login from './Components/Auth/Login/login.jsx'
 import Register from './Components/Auth/Register/Register.jsx'
 import { AuthProvider } from './Context/AuthContext.jsx'
+import { useAuth } from './Context/AuthContext.jsx'
 
-function Layout () {
+const { isLoggedin } = useAuth();
+
+function Layout() {
   return (
     <>
-    <Navbar />
-    <URL />
-    <Outlet />
+      <Navbar />
+      <URL />
+      <Outlet />
     </>
   )
 }
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <AuthProvider>
-      <StoreProivder>
-        <Routes>
-          <Route path='/' element={<Login />} />
-          <Route path='/register' element={<Register />} />
-
+    <StoreProivder>
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <AuthProvider>
           <Route element={<Layout />}>
-          <Route path='/dashboard' element={<App />} />
-          <Route path='/qrcode-generate' element={<Main />} />
-          <Route path='/view-classes' element={<ViewClasses />} />
-          <Route path='/report' element={<Report />} />
+            <Route path='/dashboard' element={<App />} />
+            <Route path='/qrcode-generate' element={<Main />} />
+            <Route path='/view-classes' element={<ViewClasses />} />
+            <Route path='/report' element={<Report />} />
           </Route>
-        </Routes>
-      </StoreProivder>
-    </AuthProvider>
+        </AuthProvider>
+      </Routes>
+    </StoreProivder>
   </BrowserRouter>
 )

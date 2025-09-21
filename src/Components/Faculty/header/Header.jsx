@@ -4,10 +4,25 @@ import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
   const navigate = useNavigate()
+
+  const getTimeOfDay = () => {
+    const currentHour = new Date().getHours();
+
+    if(currentHour >= 5 && currentHour < 12) {
+      return "Morning"
+    } else if(currentHour >= 12 && currentHour < 17) {
+      return "Afternoon"
+    } else if(currentHour >= 17 && currentHour < 21) {
+      return "Evening"
+    } else {
+      return "Night"
+    }
+  }
+
   return (
     <div className='box mt-3 p-3 md:flex md:justify-between'>
       <div>
-      <h1 className='heading'>Good Morning, Professer!</h1>
+      <h1 className='heading'>Good {getTimeOfDay()}, Professer!</h1>
       <p>Manage your classes and monitor attendance in real-time</p>
       </div>
       <div className='flex gap-3'>

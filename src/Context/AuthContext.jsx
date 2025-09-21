@@ -1,5 +1,6 @@
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { createContext, useContext, useState } from "react";
+import { Navigate } from "react-router-dom";
 
 const AuthContext = createContext();
 const CLIENT_ID = "813985617007-uiqlskutinet483mcebfor0en6ld8r9d.apps.googleusercontent.com"
@@ -22,7 +23,7 @@ export function AuthProvider({ children }) {
     return (
         <GoogleOAuthProvider clientId={CLIENT_ID}>
             <AuthContext.Provider value={value}>
-                {children}
+                {isLoggedin ? children : <Navigate to={'/'}/>}
             </AuthContext.Provider>
         </GoogleOAuthProvider>
     )
