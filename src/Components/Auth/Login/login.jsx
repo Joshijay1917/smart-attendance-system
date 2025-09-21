@@ -18,6 +18,9 @@ export default function SmartPresenceLogin() {
   })
   const [errorMsg, seterrorMsg] = useState('');
 
+  console.log("IsLoggedIn ", isLoggedin);
+  
+
   const handleChange = (e) => {
     const { name, value } = e.target
 

@@ -1,15 +1,17 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../../../../Context/AuthContext';
 
 const URL = () => {
     const location = useLocation();
     const pathnames = location.pathname.split("/").filter((x) => x);
+    const { isAdmin } = useAuth()
 
     return (
         <div className='box mt-20 p-1'>
             <span>
                 <Link to={'/'}>
-                    Dashboard
+                    {isAdmin ? 'Faculty Portal' : 'Student Portal'}
                 </Link>
             </span>
             {pathnames.map((value, index) => {

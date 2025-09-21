@@ -10,8 +10,8 @@ import { useEffect, useState } from 'react'
 import StuHeader from './Components/Student/header/StuHeader'
 
 function App() {
-  const [isAdmin, setIsAdmin] = useState(false)
-  const { currentUser } = useAuth()
+  // const [isAdmin, setIsAdmin] = useState(false)
+  const { currentUser, isAdmin, setIsAdmin } = useAuth()
 
   console.log("CuurentUser ", currentUser);
   

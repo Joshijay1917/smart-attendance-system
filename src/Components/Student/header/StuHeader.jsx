@@ -5,7 +5,7 @@ const StuHeader = ({username}) => {
     return (
         <div className='box mt-3 p-3 md:flex md:justify-between'>
             <div>
-                <h1 className='heading flex flex-col'>Welcom Back!, <p>{username.name}</p></h1>
+                <h1 className='heading flex flex-col'>Welcom Back! <p>{username.name}</p></h1>
                 <p>Mark your attendance and see analytics in real-time</p>
             </div>
             <div className='flex gap-3 items-center'>
