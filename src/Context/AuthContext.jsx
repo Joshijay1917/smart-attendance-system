@@ -51,9 +51,9 @@ export function AuthProvider({ children }) {
             setattendanceList((prev) => [...prev, data]);
           });
         }
-        return () => {
-          socket.disconnect();
-        };
+        // return () => {
+        //   socket.disconnect();
+        // };
       }, [isAdmin])
 
       console.log("AttenList ", attendanceList);
