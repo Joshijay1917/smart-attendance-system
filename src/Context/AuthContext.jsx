@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
 const CLIENT_ID = "813985617007-uiqlskutinet483mcebfor0en6ld8r9d.apps.googleusercontent.com"
+const sessionId = "asdjaQdsaAsjDkKJSkak"
 
 export function useAuth() {
     return useContext(AuthContext)
@@ -12,6 +13,7 @@ export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [isLoggedin, setIsLoggedin] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [attendanceList, setattendanceList] = useState([])
 
     useEffect(() => {
         /* global google */
@@ -38,10 +40,28 @@ export function AuthProvider({ children }) {
         }
       }, []);
 
+      useEffect(()=>{
+        if(isAdmin) {
+          const socket = io("https://check-ip-test-backend.onrender.com");
+
+          socket.emit("joinSession", { sessionId });
+
+          socket.on("attendanceMarked", (data) => {
+            setattendanceList((prev) => [...prev, data]);
+          });
+        }
+        return () => {
+          socket.disconnect();
+        };
+      }, [isAdmin])
+
+      console.log("AttenList ", attendanceList);
+
     const value = {
         currentUser,
         isLoggedin,
         isAdmin,
+        attendanceList,
         setIsAdmin,
         setIsLoggedin,
         setCurrentUser

@@ -30,7 +30,7 @@ const MarkAttendance = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ token: token, userId: currentUser.name })
+                body: JSON.stringify({ token: token, userId: currentUser })
             });
             const res = await strRes.json()
 
