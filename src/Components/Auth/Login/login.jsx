@@ -12,19 +12,28 @@ export default function SmartPresenceLogin() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [isSigningIn, setIsSigningIn] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('');
-  const [errorMsg, seterrorMsg] = useState('')
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  })
+  const [errorMsg, seterrorMsg] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Form ", formData);
     if(!isSigningIn) {
       setIsSigningIn(true);
-      if(e.email.value === 'admin123@gmail.com' && e.password.value === 'admin1917') {
-        setCurrentUser({
-          email: e.email.value,
-          password: e.password.value,
-        })
+      if(formData.email === 'admin123@gmail.com' && formData.password === 'admin1917') {
+        setCurrentUser({ ...formData })
         setIsLoggedin(true)
         return;
       }
@@ -75,8 +84,7 @@ export default function SmartPresenceLogin() {
               <input
                 name="email"
                 type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleChange}
                 placeholder="Enter your email"
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
@@ -90,8 +98,7 @@ export default function SmartPresenceLogin() {
                 <input
                   name="password"
                   type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={handleChange}
                   placeholder="Enter your password"
                   className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />

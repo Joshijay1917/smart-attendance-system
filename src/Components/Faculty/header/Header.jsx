@@ -12,7 +12,7 @@ const Header = () => {
       </div>
       <div className='flex gap-3'>
       <button onClick={()=>window.location.href = '/'} className='btn my-3 flex items-center gap-2'><SlRefresh className='text-[24px]'/> Refresh</button>
-       <input type='date' value={new Date().toISOString().split("T")[0]}/> 
+       <input type='date' value={new Date().toISOString().split("T")[0]} readOnly/> 
       </div>
     </div>
   )

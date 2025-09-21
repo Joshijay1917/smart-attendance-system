@@ -13,6 +13,8 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false)
   const { currentUser } = useAuth()
 
+  console.log("CuurentUser ", currentUser);
+  
   useEffect(() => {
     if (currentUser.email && currentUser.password) {
       if (currentUser.password === 'admin1917' && currentUser.email === 'admin123@gmail.com') {
@@ -24,8 +26,6 @@ function App() {
 
   return (
     <>
-      {currentUser && <Navbar />}
-      {currentUser && <URL />}
       {isAdmin ? <div className='md:m-auto md:w-[80%]'>
         <Header />
         <QuickAccess />
@@ -33,7 +33,7 @@ function App() {
         <Classes />
       </div> :
         <div>
-          <StuHeader username={currentUser.name}/>
+          <StuHeader username={currentUser}/>
         </div>}
     </>
   )
