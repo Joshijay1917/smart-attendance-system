@@ -1,13 +1,15 @@
 import React from 'react'
 import { BsQrCodeScan } from 'react-icons/bs'
 import { MdHistory } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 
 const QuickAccess = () => {
+  const navigate = useNavigate()
   return (
     <div className='box my-5 p-3'>
           <h1 className='heading-3'>Quick Access</h1>
           <div className='md:flex gap-5'>
-            <div onClick={()=>navigate('/qrcode-generate')} className='flex items-center gap-2 bg-blue-400 text-white p-3 rounded-2xl my-2'>
+            <div onClick={()=>navigate('/mark-attendance')} className='flex items-center gap-2 bg-blue-400 text-white p-3 rounded-2xl my-2'>
                 <BsQrCodeScan className='text-3xl'/>
                 <div className='flex flex-col'>
                     <h2 className='heading-2'>Mark Attendance</h2>

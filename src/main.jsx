@@ -13,6 +13,7 @@ import Login from './Components/Auth/Login/login.jsx'
 import Register from './Components/Auth/Register/Register.jsx'
 import { AuthProvider } from './Context/AuthContext.jsx'
 import { useAuth } from './Context/AuthContext.jsx'
+import MarkAttendance from './Components/Student/Main/MarkAttendance/MarkAttendance.jsx'
 
 
 function Layout() {
@@ -43,6 +44,7 @@ createRoot(document.getElementById('root')).render(
             <Route path='/qrcode-generate' element={<ProtectedRoute><Main /></ProtectedRoute> } />
             <Route path='/view-classes' element={<ProtectedRoute><ViewClasses /></ProtectedRoute> } />
             <Route path='/report' element={<ProtectedRoute><Report /></ProtectedRoute> } />
+            <Route path='/mark-attendance' element={<ProtectedRoute><MarkAttendance /></ProtectedRoute> } />
           </Route>
         </Routes>
       </AuthProvider>
