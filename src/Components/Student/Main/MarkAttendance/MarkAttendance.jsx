@@ -1,8 +1,10 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { Scanner } from '@yudiel/react-qr-scanner';
 import QuickPinchZoom, { make3dTransformValue } from "react-quick-pinch-zoom";
+import { useAuth } from '../../../../Context/AuthContext';
 
 const MarkAttendance = () => {
+    const { currentUser } = useAuth()
     const videoRef = useRef();
     const [errMsg, seterrMsg] = useState('')
     const [ZoomLevel, setZoomLevel] = useState(1)
@@ -28,7 +30,7 @@ const MarkAttendance = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ token: token, userId: username })
+                body: JSON.stringify({ token: token, userId: currentUser.name })
             });
             const res = await strRes.json()
 
