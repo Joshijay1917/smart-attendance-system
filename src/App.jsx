@@ -4,10 +4,9 @@ import QuickAccess from './Components/Faculty/Main/quickAccess/QuickAccess'
 import Overview from './Components/Faculty/Main/Overview/Overview'
 import Classes from './Components/Faculty/Main/Classes/Classes'
 import { useAuth } from './Context/AuthContext'
-import Navbar from './Components/Faculty/header/Navbar/Navbar'
-import URL from './Components/Faculty/Main/url/URL'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import StuHeader from './Components/Student/header/StuHeader'
+import StuQuickAccess from './Components/Student/Main/QuckAccess/QuickAccess'
 
 function App() {
   // const [isAdmin, setIsAdmin] = useState(false)
@@ -34,6 +33,7 @@ function App() {
       </div> :
         <div>
           <StuHeader username={currentUser}/>
+          <StuQuickAccess />
         </div>}
     </>
   )
