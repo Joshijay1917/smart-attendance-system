@@ -56,7 +56,9 @@ export function AuthProvider({ children }) {
         // };
       }, [isAdmin])
 
-      console.log("AttenList ", attendanceList);
+    useEffect(()=>{
+        console.log("AttenList ", attendanceList);
+    }, [attendanceList]);
 
     const value = {
         currentUser,
