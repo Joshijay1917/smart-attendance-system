@@ -54,6 +54,9 @@ const MarkAttendance = () => {
                     return;
                 }
                 setloading("Attendance Marked")
+                setTimeout(() => {
+                    setloading('')
+                }, 5000);
             } catch (error) {
                 setloading("Err")
                 console.log("Err ", error);
