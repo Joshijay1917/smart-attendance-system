@@ -14,9 +14,9 @@ import Register from './Components/Auth/Register/Register.jsx'
 import { AuthProvider } from './Context/AuthContext.jsx'
 import { useAuth } from './Context/AuthContext.jsx'
 
-const { isLoggedin } = useAuth();
 
 function Layout() {
+  const { isLoggedin } = useAuth();
   return (
     <>
       <Navbar />
@@ -26,21 +26,26 @@ function Layout() {
   )
 }
 
+function ProtectedRoute({ children }) {
+  const { isLoggedin } = useAuth();
+  return isLoggedin ? children : <Navigate to="/" />;
+}
+
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <StoreProivder>
-      <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <AuthProvider>
-          <Route element={<Layout />}>
-            <Route path='/dashboard' element={<App />} />
-            <Route path='/qrcode-generate' element={<Main />} />
-            <Route path='/view-classes' element={<ViewClasses />} />
-            <Route path='/report' element={<Report />} />
+      <AuthProvider>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+            <Route path='/dashboard' element={<ProtectedRoute><App /></ProtectedRoute> } />
+            <Route path='/qrcode-generate' element={<ProtectedRoute><Main /></ProtectedRoute> } />
+            <Route path='/view-classes' element={<ProtectedRoute><ViewClasses /></ProtectedRoute> } />
+            <Route path='/report' element={<ProtectedRoute><Report /></ProtectedRoute> } />
           </Route>
-        </AuthProvider>
-      </Routes>
+        </Routes>
+      </AuthProvider>
     </StoreProivder>
   </BrowserRouter>
 )
