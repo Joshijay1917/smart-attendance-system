@@ -43,11 +43,13 @@ export function AuthProvider({ children }) {
 
       useEffect(()=>{
         if(isAdmin) {
+            console.log("adminwebsocket")
           const socket = io("https://check-ip-test-backend.onrender.com");
 
           socket.emit("joinSession", { sessionId });
 
           socket.on("attendanceMarked", (data) => {
+              console.log("attendance web socket")
             setattendanceList((prev) => [...prev, data]);
           });
         }
