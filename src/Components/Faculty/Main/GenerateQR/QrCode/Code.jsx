@@ -6,7 +6,7 @@ const Code = () => {
     const [token, settoken] = useState(null)
     const [status, setstatus] = useState("QR Code generating")
     const storeData = useContext(Store)
-    import { attendanceList } = useAuth()
+    const { attendanceList } = useAuth()
 
     const generateToken = async () => {
         try {
