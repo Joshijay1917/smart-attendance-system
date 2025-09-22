@@ -46,14 +46,14 @@ const Code = () => {
         <div>
             <p className='text-center text-xl font-semibold'>{status}</p>
             {token && <img className='m-auto my-10 w-1/2' src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${token}`} />}
-            <div className='flex flex-col gap-3 mt-5'>
-            {attendanceList.map(stu => (
-            <div className='p-3 box flex flex-col'>
-                <p className='heading-3'>{stu.username}</p>
-                <p>{stu.time}</p>
-            </div>
-            )}
-                </div>
+            <div className="flex flex-col gap-3 mt-5">
+      {attendanceList.map((stu, index) => (
+        <div key={stu.id || index} className="p-3 box flex flex-col">
+          <p className="heading-3">{stu.username}</p>
+          <p>{stu.time}</p>
+        </div>
+      ))}
+    </div>
         </div>
     )
 }
