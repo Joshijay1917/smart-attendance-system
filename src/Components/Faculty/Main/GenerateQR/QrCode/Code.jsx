@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Store } from '../../../../../Context/Store'
+import { useAuth } from '../../../../../Context/AuthContext'
 
 const Code = () => {
     const [token, settoken] = useState(null)
     const [status, setstatus] = useState("QR Code generating")
     const storeData = useContext(Store)
+    import { attendanceList } = useAuth()
 
     const generateToken = async () => {
         try {
@@ -44,6 +46,14 @@ const Code = () => {
         <div>
             <p className='text-center text-xl font-semibold'>{status}</p>
             {token && <img className='m-auto my-10 w-1/2' src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${token}`} />}
+            <div className='flex flex-col gap-3 mt-5'>
+            {attendanceList.map(stu => (
+            <div className='p-3 box flex flex-col'>
+                <p className='heading-3'>{stu.username}</p>
+                <p>{stu.time}</p>
+            </div>
+            )}
+                </div>
         </div>
     )
 }
